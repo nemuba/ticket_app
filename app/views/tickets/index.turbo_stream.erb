@@ -1,0 +1,3 @@
+<%= turbo_stream.update "tickets", partial: 'tickets/ticket', collection: @tickets %>
+
+<%= turbo_stream.update "pager", partial: 'tickets/pager', locals: { pagy: @pagy } %>

@@ -1,7 +1,8 @@
-<tr>
-  <th scope="row">1</th>
-  <td>Mark</td>
-  <td>Otto</td>
-  <td>@mdo</td>
+<tr id="<%= dom_id(ticket) %>"> 
+  <th scope="row"><%= ticket.id %></th>
+  <td><%= ticket.title %></td>
+  <td><%= ticket.current_status %></td>
+  <td><%= ticket.comments %></td>
   <td>#</td>
 </tr>
+
