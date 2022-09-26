@@ -13,7 +13,9 @@
   <body>
     <%= render 'layouts/shared/navbar' %>
     <div class="container">
-      <%= yield %>
+      <div data-bs-spy="scroll" data-bs-target="#navbar" data-bs-smooth-scroll="true" class="scrollspy-example-2" tabindex="0">
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>
