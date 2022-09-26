@@ -1,0 +1,16 @@
+<div id="tickets" class="container mt-5 pt-5">
+  <h1 class="display-3 mt-5">Tickets</h1>
+  <div class="table-responsive">
+    <table class="table table-md table-hover">
+      <thead>
+        <%= render '/tickets/shared/header' %>
+      </thead>
+      <tbody class="table-group-divider">
+        <%= render 'tickets/ticket' %>
+      </tbody>
+      <tfoot>
+        <%= render '/tickets/shared/footer' %>
+      </tfoot>
+    </table>
+  </div>
+</div>
