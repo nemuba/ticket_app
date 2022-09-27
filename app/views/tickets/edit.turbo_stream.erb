@@ -1,0 +1,5 @@
+<%= turbo_stream.replace 'remote_modal' do %>
+  <%= render 'tickets/shared/modal', title: 'Edit Ticket' do %>
+    <%= render 'form', ticket: @ticket %>
+  <% end %>
+<% end %>

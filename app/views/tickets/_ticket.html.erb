@@ -3,6 +3,9 @@
   <td><%= ticket.title %></td>
   <td><%= ticket.current_status %></td>
   <td><%= ticket.comments %></td>
-  <td>#</td>
+  <td>
+    <%= link_to 'Edit', edit_ticket_path(ticket), data: { turbo_stream: 'remote_modal' } %>
+    <%= link_to 'Remove', ticket, data: { turbo_method: :delete, turbo_confirm: 'confirm already to remove ?'} %>
+  </td>
 </tr>
 

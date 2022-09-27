@@ -1,0 +1,8 @@
+<% if @ticket.errors.any?  %>
+  <%= turbo_stream.update "remote_modal_body" do %>
+    <%= render "form", ticket: @ticket %>
+  <% end %>
+<% else %>
+  <%= turbo_stream.append :tickets, partial: 'tickets/ticket', locals: { ticket: @ticket } %>
+  <%= turbo_stream.replace "flash_messages", partial: 'layouts/shared/flash_messages', locals: { message: 'Created with success !'}  %>
+<% end %>

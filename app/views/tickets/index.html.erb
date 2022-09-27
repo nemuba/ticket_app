@@ -1,11 +1,14 @@
-<div class="container mt-5 pt-5">
+<div class="container mt-2 pt-5">
   <h1 class="display-3 mt-5">Tickets</h1>
+  <!-- Button trigger modal -->
+  <%= link_to  "New Ticket", new_ticket_path, class: "btn btn-primary", data: { turbo_frame: "remote_modal" } %>
   <div class="table-responsive">
     <table class="table table-md table-hover">
       <thead>
         <%= render '/tickets/shared/header' %>
       </thead>
       <tbody id="tickets" class="table-group-divider">
+          <%= turbo_stream_from :tickets %>
           <%= render @tickets %>
       </tbody>
     </table>
@@ -13,5 +16,3 @@
     <%= render 'pager', pagy: @pagy %>
   </div>
 </div>
-
-

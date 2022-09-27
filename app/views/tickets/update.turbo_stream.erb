@@ -1,0 +1,8 @@
+<% if @ticket.errors.any? %>
+  <%= turbo_stream.update "remote_modal_body" do %>
+    <%= render "form", ticket: @ticket %>
+  <% end %>
+<% else %>
+  <%= turbo_stream.replace "flash_messages", partial: 'layouts/shared/flash_messages', locals: { message: 'Updated with success !'}  %>
+  <%= turbo_stream.replace dom_id(@ticket), partial: 'tickets/ticket', locals: { ticket: @ticket} %>
+<% end %>

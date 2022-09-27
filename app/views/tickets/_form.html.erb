@@ -1,0 +1,36 @@
+<%= form_with(model: @ticket, id: "ticket-form", data: { action: "turbo:submit-end->modal#clear" } ) do |form| %>
+  <div class="px-4 pt-2 pb-4 sm:p-4 sm:pb-2">
+    <% if @ticket.errors.any? %>
+      <h3>Errors</h3>
+      <div class="p-2 border border-danger">
+        <ul>
+          <% @ticket.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :title, class: 'form-label' %>
+      <%= form.text_field :title, class: 'form-control' %>
+    </div>
+
+    <div class="form-group mt-3">
+      <%= form.label :current_status, class: 'form-label' %>
+      <%= form.select :current_status, Ticket.current_statuses,{}, {class: 'form-select'} %>
+    </div>
+
+    <div class="form-floating mt-3">
+      <%= form.text_area :comments, class: 'form-control' %>
+      <%= form.label :comments, class: 'form-label' %>
+    </div>
+
+  </div>
+  <div class="grid">
+    <%= form.button class: "btn btn-primary ml-2" %>
+    <button data-action="click->modal#close" class="btn btn-danger ml-2">
+      Cancel
+    </button>
+  </div>
+<% end %>

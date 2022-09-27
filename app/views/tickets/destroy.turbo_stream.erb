@@ -1,0 +1,2 @@
+<%= turbo_stream.replace "flash_messages", partial: 'layouts/shared/flash_messages', locals: { message: 'Removed with success !'}  %>
+<%= turbo_stream.remove dom_id(@ticket) %>
