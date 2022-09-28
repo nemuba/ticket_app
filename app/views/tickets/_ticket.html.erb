@@ -4,8 +4,13 @@
   <td><%= ticket.current_status %></td>
   <td><%= ticket.comments %></td>
   <td>
-    <%= link_to 'Edit', edit_ticket_path(ticket), data: { turbo_stream: 'remote_modal' } %>
-    <%= link_to 'Remove', ticket, data: { turbo_method: :delete, turbo_confirm: 'confirm already to remove ?'} %>
+    <%= link_to edit_ticket_path(ticket), class: 'btn btn-sm btn-success', data: { turbo_stream: 'remote_modal' } do %>
+      <i class="bi bi-pencil"></i>
+    <% end %>
+
+    <%= link_to ticket, class: 'btn btn-sm btn-danger', data: { turbo_method: :delete, turbo_confirm: 'confirm already to remove ?'} do %>
+      <i class="bi bi-trash"></i>
+    <% end %>
   </td>
 </tr>
 

@@ -75,3 +75,5 @@ group :development do
 end
 
 gem "pagy", "~> 5.10"
+
+gem "devise", github: "heartcombo/devise", ref: "f8d1ea90bc3"

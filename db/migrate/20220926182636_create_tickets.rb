@@ -8,7 +8,7 @@ class CreateTickets < ActiveRecord::Migration[7.0]
       t.string :title
       t.enum :current_status, enum_type: "status", default: "pending", null: false
       t.text :comments
-
+      t.references :user, null: false, index: true
       t.timestamps
     end
   end

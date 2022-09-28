@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class TicketsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_ticket, only: [:edit, :update, :destroy]
 
   def index
@@ -49,7 +50,7 @@ class TicketsController < ApplicationController
 
   private
     def ticket_params
-      params.require(:ticket).permit(:title, :current_status, :comments)
+      params.require(:ticket).permit(:title, :current_status, :comments, :user_id)
     end
 
     def set_ticket

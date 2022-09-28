@@ -11,6 +11,10 @@
       </div>
     <% end %>
 
+    <div class="form-hidden">
+      <%= form.hidden_field :user_id, value: current_user.id %>
+    </div>
+
     <div class="form-group">
       <%= form.label :title, class: 'form-label' %>
       <%= form.text_field :title, class: 'form-control' %>

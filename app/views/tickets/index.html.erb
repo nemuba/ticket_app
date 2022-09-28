@@ -1,7 +1,10 @@
 <div class="container mt-2 pt-5">
   <h1 class="display-3 mt-5">Tickets</h1>
   <!-- Button trigger modal -->
-  <%= link_to  "New Ticket", new_ticket_path, class: "btn btn-primary", data: { turbo_frame: "remote_modal" } %>
+  <%= link_to new_ticket_path, class: "btn btn-primary", data: { turbo_frame: "remote_modal" } do %>
+    <i class="bi bi-plus"></i> <span>Ticket</span>
+  <% end %>
+  
   <div class="table-responsive">
     <table class="table table-md table-hover">
       <thead>
