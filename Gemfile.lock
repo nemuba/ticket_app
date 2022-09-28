@@ -239,6 +239,8 @@ GEM
       rubocop-performance (~> 1.11)
       rubocop-rails (~> 2.0)
     ruby-progressbar (1.11.0)
+    shoulda-matchers (5.2.0)
+      activesupport (>= 5.2.0)
     sprockets (4.1.1)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -289,6 +291,7 @@ DEPENDENCIES
   redis (~> 4.0)
   rspec-rails
   rubocop-rails_config
+  shoulda-matchers (~> 5.0)
   sprockets-rails
   stimulus-rails
   turbo-rails

@@ -2,16 +2,18 @@
 
 require "rails_helper"
 
-# Specs in this file have access to a helper object that includes
-# the TicketsHelper. For example:
-#
-# describe TicketsHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe TicketsHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "status_class" do
+    it "pending" do
+      expect(helper.status_class("pending")).to eq("bg-warning p-1 rounded text-white")
+    end
+
+    it "completed" do
+      expect(helper.status_class("completed")).to eq("bg-success p-1 rounded text-white")
+    end
+
+    it "removed" do
+      expect(helper.status_class("removed")).to eq("bg-danger p-1 rounded text-white")
+    end
+  end
 end
