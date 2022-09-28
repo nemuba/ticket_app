@@ -2,7 +2,7 @@
 
 class TicketsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_ticket, only: [:edit, :update, :destroy]
+  before_action :set_ticket, only: [:show, :edit, :update, :destroy]
 
   def index
     @pagy, @tickets = pagy(Ticket.order(:created_at), items: 10, link_extra: "data-turbo-stream=''")
@@ -11,6 +11,8 @@ class TicketsController < ApplicationController
   def new
     @ticket = Ticket.new
   end
+
+  def show; end
 
   def create
     @ticket = Ticket.new(ticket_params)

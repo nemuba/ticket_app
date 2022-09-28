@@ -1,0 +1,11 @@
+<%= render 'tickets/shared/show', title: @ticket.title do %>
+  <span class="fw-bolder">Status:</span>
+  <span class="badge fs-5 <%= status_class(@ticket.current_status) %>" >
+    <%= @ticket.current_status %>
+  </span>
+
+  <h6 class="fw-bold mt-3">Comments:</h6>
+  <div class="p-2 border border-1 rounded">
+    <p><%= @ticket.comments %></p>
+  </div>
+<% end %>

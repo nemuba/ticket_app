@@ -1,7 +1,7 @@
 <tr id="<%= dom_id(ticket) %>"> 
   <th scope="row"><%= ticket.id %></th>
-  <td><%= ticket.title %></td>
-  <td><%= ticket.current_status %></td>
+  <td><%= link_to ticket.title, ticket, data: { turbo_frame: 'ticket_modal'} %></td>
+  <td><span class="<%= status_class(ticket.current_status) %>"><%= ticket.current_status %></span></td>
   <td><%= ticket.comments %></td>
   <td>
     <%= link_to edit_ticket_path(ticket), class: 'btn btn-sm btn-success', data: { turbo_stream: 'remote_modal' } do %>

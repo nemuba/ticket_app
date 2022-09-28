@@ -13,6 +13,7 @@
   <body>
     <%= render 'layouts/shared/navbar' %>
     <%= turbo_frame_tag "remote_modal" %>
+    <%= turbo_frame_tag "ticket_modal" %>
     <div class="container">
       <div data-bs-spy="scroll" data-bs-target="#navbar" data-bs-smooth-scroll="true" class="scrollspy-example-2" tabindex="0">
         <%= turbo_frame_tag :flash_messages, target: '_top' %>
