@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class Ticket < ApplicationRecord
+  include ExportCsv
+  include ImportCsv
+
   belongs_to :user
 
   validates :title, presence: true
@@ -11,4 +14,10 @@ class Ticket < ApplicationRecord
   after_create_commit { broadcast_prepend_later_to "tickets" }
   after_update_commit { broadcast_replace_later_to "tickets" }
   after_destroy_commit { broadcast_remove_to "tickets" }
+
+  def self.by_user(user)
+    joins(:user)
+      .where(user_id: user.id)
+      .order(:created_at)
+  end
 end

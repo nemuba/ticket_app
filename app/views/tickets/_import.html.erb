@@ -1,0 +1,5 @@
+<%= form_tag '/tickets/import', method: :post, multipart: true, class: 'd-flex gap-3 justify-content-around' do %>
+  <%= label_tag "Import tickets: " %>
+  <%= file_field_tag :file %>
+  <%= submit_tag 'Import', class: 'btn btn-sm btn-primary' %>
+<% end %>

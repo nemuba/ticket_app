@@ -7,9 +7,10 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-
+user = User.create(email: "admin@admin.com", password: "123456789", password_confirmation: "123456789")
 1..100.times do
   Ticket.create(
+    user_id: user.id,
     title: Faker::Book.title,
     current_status: ["pending", "completed", "removed"].sample,
     comments: Faker::Lorem.paragraph(sentence_count: 2, supplemental: true, random_sentences_to_add: 4)

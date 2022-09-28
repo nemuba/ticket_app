@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
 class TicketsController < ApplicationController
+  include CopyFile
+
   before_action :authenticate_user!
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
 
   def index
-    @pagy, @tickets = pagy(Ticket.order(:created_at), items: 10, link_extra: "data-turbo-stream=''")
+    @pagy, @tickets = pagy(Ticket.by_user(current_user), items: 10, link_extra: "data-turbo-stream=''")
   end
 
   def new
@@ -45,6 +47,27 @@ class TicketsController < ApplicationController
         format.html { redirect_to tickets_url }
         format.turbo_stream
       else
+        format.turbo_stream
+      end
+    end
+  end
+
+  def download
+    respond_to do |format|
+      format.csv { send_data Ticket.to_csv, filename: "tickets.csv" }
+    end
+  end
+
+  def import
+    respond_to do |format|
+      if params[:file].present?
+        file_path = generate_file(params[:file].path)
+
+        TicketImportJob.perform_later(file_path, current_user.id)
+        format.html { redirect_to tickets_path }
+        format.turbo_stream
+      else
+        format.html { redirect_to tickets_path }
         format.turbo_stream
       end
     end
