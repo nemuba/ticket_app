@@ -3,6 +3,6 @@
     <%= render "form", ticket: @ticket %>
   <% end %>
 <% else %>
-  <%= turbo_stream.append :tickets, partial: 'tickets/ticket', locals: { ticket: @ticket } %>
+  <%= turbo_stream.append "tickets_user_#{current_user.id}", partial: 'tickets/ticket', locals: { ticket: @ticket } %>
   <%= turbo_stream.replace "flash_messages", partial: 'layouts/shared/flash_messages', locals: { message: 'Created with success !',  action: 'create'}  %>
 <% end %>

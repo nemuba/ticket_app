@@ -14,8 +14,8 @@
       <thead>
         <%= render '/tickets/shared/header' %>
       </thead>
-      <tbody id="tickets" class="table-group-divider">
-          <%= turbo_stream_from :tickets %>
+      <tbody id="tickets_user_<%= current_user.id %>" class="table-group-divider">
+          <%= turbo_stream_from "tickets_user_#{current_user.id}" %>
           <%= render @tickets %>
       </tbody>
       <tfoot>
