@@ -25,9 +25,9 @@
       <%= form.select :current_status, Ticket.current_statuses,{}, {class: 'form-select'} %>
     </div>
 
-    <div class="form-floating mt-3">
-      <%= form.text_area :comments, class: 'form-control' %>
+    <div class="form-group mt-3">
       <%= form.label :comments, class: 'form-label' %>
+      <%= form.rich_text_area :comments, class: 'form-control' %>
     </div>
 
   </div>

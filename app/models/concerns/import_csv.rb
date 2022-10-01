@@ -16,8 +16,10 @@ module ImportCsv
         record.attributes = row.to_hash.except("id", "user_id")
         record.save!
       end
+    rescue StandardError => e
+      puts e.message
     ensure
-      File.remove(file_path) if  file_path.present? && File.exist?(file_path)
+      File.delete(file_path) if  file_path.present? && File.exist?(file_path)
     end
   end
 end

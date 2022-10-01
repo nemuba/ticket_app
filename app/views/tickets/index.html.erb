@@ -8,7 +8,9 @@
 
     <%= button_to 'Download', download_tickets_path(format: :csv), method: :post, class: 'btn btn-success' %>
   </div>
-  
+
+  <!-- Search form -->
+  <%= render 'tickets/shared/search' %>
   <div class="table-responsive">
     <table class="table table-md table-hover">
       <thead>

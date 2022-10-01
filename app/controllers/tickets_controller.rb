@@ -7,7 +7,11 @@ class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
 
   def index
-    @pagy, @tickets = pagy(Ticket.by_user(current_user), items: 10, link_extra: "data-turbo-stream=''")
+    @pagy, @tickets = if params[:search].present?
+      pagy(Ticket.by_user(current_user).search(params[:search]), items: 10, link_extra: "data-turbo-stream=''")
+    else
+      pagy(Ticket.by_user(current_user), items: 10, link_extra: "data-turbo-stream=''")
+    end
   end
 
   def new

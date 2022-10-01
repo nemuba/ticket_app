@@ -1,0 +1,31 @@
+<div id="form-search" class="d-flex justify-content-center mt-2 w-100">
+  <%= form_tag(
+    '/tickets', 
+    method: :get, 
+    data: { 
+      turbo_stream: '',
+      controller: 'form-search',
+      form_search_target: 'form'
+    }
+  ) do %>
+    <div class="row align-items-center">
+      <div class="col-auto">
+        <%= label_tag 'Search' %>
+      </div>
+      <div class="col-auto">
+        <%= text_field_tag :search, 
+            params[:search], 
+            class: 'form-control', 
+            data: { form_search_target: 'search', action: 'input->form-search#change' } 
+        %>
+      </div>
+      <div class="col-auto">
+        <%= submit_tag 'Pesquisar', class: 'btn btn-primary' %>
+        <%= link_to 'List all', 
+            tickets_path, 
+            class: 'btn btn-secondary', 
+            data: { turbo_stream: '', action: 'form-search#reset'}  %>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -7,6 +7,9 @@ import { application } from "./application"
 import FlashMessagesController from "./flash_messages_controller"
 application.register("flash-messages", FlashMessagesController)
 
+import FormSearchController from "./form_search_controller"
+application.register("form-search", FormSearchController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
