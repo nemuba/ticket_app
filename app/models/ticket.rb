@@ -17,7 +17,7 @@ class Ticket < ApplicationRecord
 
   scope :by_user, ->(user) { joins(:user).where(user_id: user.id).with_all_rich_text.order(:created_at) }
   scope :search, ->(title) { where("title LIKE ?", "%#{title}%") }
-  
+
   def create_broadcast
     broadcast_prepend_later_to "tickets_user_#{user_id}"
   end
