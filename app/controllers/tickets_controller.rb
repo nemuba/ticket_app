@@ -58,7 +58,7 @@ class TicketsController < ApplicationController
 
   def download
     respond_to do |format|
-      format.csv { send_data Ticket.to_csv, filename: "tickets.csv" }
+      format.csv { send_data Ticket.to_csv(current_user), filename: "tickets.csv" }
     end
   end
 

@@ -29,4 +29,18 @@ RSpec.describe Ticket, type: :model do
     it { should validate_presence_of(:title) }
     it { should validate_presence_of(:current_status) }
   end
+
+  describe "ClassMethods" do
+    let(:user) { create(:user) }
+    let(:file_path) { "./tmp/temp.csv" }
+    before(:each) { csv_file(file_path) }
+
+    it "#import" do
+      expect { Ticket.import(file_path, user.id) }.not_to raise_error
+    end
+
+    it "#to_csv" do
+      expect { Ticket.to_csv(user) }.not_to raise_error
+    end
+  end
 end
