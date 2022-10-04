@@ -15,7 +15,7 @@ module ExportCsv
         csv << headers
 
         all.each do |ticket|
-          csv << [ticket.id, ticket.user_id, ticket.title, ticket.current_status, ticket.comments]
+          csv << [ticket.id, ticket.user_id, ticket.title, ticket.current_status, ticket.comments.to_s]
         end
       end
     end
